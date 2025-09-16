@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Secure Document</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body, html {
       margin: 0;
       padding: 0;
@@ -12,7 +16,8 @@
       font-family: sans-serif;
     }
 
-    .background-container {
+    /* Background container that holds the document */
+    .background {
       position: fixed;
       top: 0;
       left: 0;
@@ -22,36 +27,39 @@
       z-index: 0;
     }
 
-    .background-container img {
+    /* We wrap the background image in a blur wrapper */
+    .background img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: blur(10px);
-      transform: scale(1.05); /* Slight zoom to hide edges from blur */
     }
 
-    .overlay {
-      position: fixed;
+    .background::after {
+      content: "";
+      position: absolute;
       top: 0;
       left: 0;
-      height: 100%;
       width: 100%;
-      background-color: rgba(0, 0, 0, 0.3);
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      height: 100%;
+      backdrop-filter: blur(10px);
+      background-color: rgba(255, 255, 255, 0.1); /* optional overlay */
       z-index: 1;
     }
 
+    /* Modal sits above everything */
     .modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
       background: white;
       padding: 2em;
       border-radius: 8px;
-      text-align: center;
       width: 90%;
       max-width: 400px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
-      z-index: 2;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     }
 
     .modal h2 {
@@ -60,43 +68,4 @@
     }
 
     .modal p {
-      color: #555;
-      font-size: 1em;
-      margin-bottom: 1.5em;
-    }
-
-    .modal button {
-      background-color: #2d70ff;
-      color: white;
-      border: none;
-      padding: 0.7em 1.5em;
-      font-size: 1em;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .modal button:hover {
-      background-color: #1a54d3;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Blurred background document (image or PDF preview as placeholder) -->
-  <div class="background-container">
-    <img src="https://via.placeholder.com/1200x800.png?text=Protected+Document+Preview" alt="Blurred Document" />
-  </div>
-
-  <!-- Overlay + Modal -->
-  <div class="overlay">
-    <div class="modal">
-      <h2>Authentication required</h2>
-      <p>This document is password protected. Please authenticate with your office credentials to view document.</p>
-      <button onclick="alert('This is a placeholder. Add your auth logic here.')">
-        REVIEW SECURE DOCUMENT
-      </button>
-    </div>
-  </div>
-
-</body>
-</html>
+      font-size: 0.95em;
