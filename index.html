@@ -1,17 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Secure Document</title>
   <style>
-    body {
+    body, html {
       margin: 0;
       padding: 0;
-      background: url('https://via.placeholder.com/1200x800.png?text=Blurred+Document') center/cover no-repeat;
-      filter: blur(5px);
-      height: 100vh;
+      height: 100%;
+      font-family: sans-serif;
+    }
+
+    .background-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       overflow: hidden;
+      z-index: 0;
+    }
+
+    .background-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: blur(10px);
+      transform: scale(1.05); /* Slight zoom to hide edges from blur */
     }
 
     .overlay {
@@ -20,12 +36,11 @@
       left: 0;
       height: 100%;
       width: 100%;
-      background-color: rgba(0, 0, 0, 0.4);
+      background-color: rgba(0, 0, 0, 0.3);
       display: flex;
       justify-content: center;
       align-items: center;
-      backdrop-filter: blur(2px);
-      z-index: 10;
+      z-index: 1;
     }
 
     .modal {
@@ -35,17 +50,18 @@
       text-align: center;
       width: 90%;
       max-width: 400px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+      z-index: 2;
     }
 
     .modal h2 {
       margin-top: 0;
-      font-size: 1.4em;
+      font-size: 1.5em;
     }
 
     .modal p {
       color: #555;
-      font-size: 0.95em;
+      font-size: 1em;
       margin-bottom: 1.5em;
     }
 
@@ -66,10 +82,16 @@
 </head>
 <body>
 
+  <!-- Blurred background document (image or PDF preview as placeholder) -->
+  <div class="background-container">
+    <img src="https://via.placeholder.com/1200x800.png?text=Protected+Document+Preview" alt="Blurred Document" />
+  </div>
+
+  <!-- Overlay + Modal -->
   <div class="overlay">
     <div class="modal">
       <h2>Authentication required</h2>
-      <p>This document is password protected. Please authenticate with your office credentials to view document</p>
+      <p>This document is password protected. Please authenticate with your office credentials to view document.</p>
       <button onclick="alert('This is a placeholder. Add your auth logic here.')">
         REVIEW SECURE DOCUMENT
       </button>
