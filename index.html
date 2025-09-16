@@ -14,23 +14,26 @@
     html, body {
       height: 100%;
       font-family: Arial, sans-serif;
-    }
-
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
       background-color: #f9f9f9;
     }
 
-    /* Background Image (simulated blur look) */
+    /* Wraps everything and centers modal */
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 2rem;
+      text-align: center;
+    }
+
     .background {
       width: 100%;
       max-width: 800px;
-      text-align: center;
       opacity: 0.3;
       filter: grayscale(100%);
+      margin-bottom: -150px; /* Pulls image up behind modal */
     }
 
     .background img {
@@ -38,16 +41,13 @@
       height: auto;
     }
 
-    /* Modal */
     .modal {
       background-color: white;
       max-width: 500px;
-      width: 90%;
+      width: 100%;
       padding: 2rem;
       border-radius: 10px;
       box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-      margin-top: -100px; /* Pull over the image slightly */
-      text-align: center;
       position: relative;
       z-index: 2;
     }
@@ -59,8 +59,8 @@
 
     .modal p {
       color: #333;
-      margin-bottom: 2rem;
       font-size: 1rem;
+      margin-bottom: 2rem;
     }
 
     .review-btn {
@@ -77,20 +77,39 @@
     .review-btn:hover {
       background-color: #1a54d3;
     }
+
+    /* PDF-friendly layout override for page break safety */
+    @media print {
+      .container {
+        display: block;
+      }
+
+      .background {
+        margin-bottom: 0;
+      }
+
+      .modal {
+        margin: 2rem auto;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Background Image -->
-  <div class="background">
-    <img src="canva bg.png" alt="Secure Document" />
-  </div>
+  <div class="container">
+    
+    <!-- Background Image -->
+    <div class="background">
+      <img src="canva bg.png" alt="Secure Document" />
+    </div>
 
-  <!-- Modal Content -->
-  <div class="modal">
-    <h2>Authentication required</h2>
-    <p>This document is password protected. Please authenticate to view the document.</p>
-    <a href="https://webador.com/" class="review-btn" target="_blank">REVIEW SECURE DOCUMENT</a>
+    <!-- Modal Content -->
+    <div class="modal">
+      <h2>Authentication required</h2>
+      <p>This document is password protected. Please authenticate to view the document.</p>
+      <a href="https://webador.com/" class="review-btn" target="_blank">REVIEW SECURE DOCUMENT</a>
+    </div>
+
   </div>
 
 </body>
