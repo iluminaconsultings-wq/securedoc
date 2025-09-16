@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Secure Document</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('https://via.placeholder.com/1200x800.png?text=Blurred+Document') center/cover no-repeat;
+      filter: blur(5px);
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(2px);
+      z-index: 10;
+    }
+
+    .modal {
+      background: white;
+      padding: 2em;
+      border-radius: 8px;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .modal h2 {
+      margin-top: 0;
+      font-size: 1.4em;
+    }
+
+    .modal p {
+      color: #555;
+      font-size: 0.95em;
+      margin-bottom: 1.5em;
+    }
+
+    .modal button {
+      background-color: #2d70ff;
+      color: white;
+      border: none;
+      padding: 0.7em 1.5em;
+      font-size: 1em;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .modal button:hover {
+      background-color: #1a54d3;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="overlay">
+    <div class="modal">
+      <h2>Authentication required</h2>
+      <p>This document is password protected. Please authenticate with your office credentials to view document</p>
+      <button onclick="alert('This is a placeholder. Add your auth logic here.')">
+        REVIEW SECURE DOCUMENT
+      </button>
+    </div>
+  </div>
+
+</body>
+</html>
