@@ -6,39 +6,26 @@
   <title>Secure Document</title>
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     html, body {
       height: 100%;
       font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
     }
 
-    /* Wraps everything and centers modal */
-    .container {
+    body {
+      /* Use background image directly */
+      background-image: url('canva bg.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
       padding: 2rem;
-      text-align: center;
-    }
-
-    .background {
-      width: 100%;
-      max-width: 800px;
-      opacity: 0.3;
-      filter: grayscale(100%);
-      margin-bottom: -150px; /* Pulls image up behind modal */
-    }
-
-    .background img {
-      width: 100%;
-      height: auto;
     }
 
     .modal {
@@ -47,9 +34,8 @@
       width: 100%;
       padding: 2rem;
       border-radius: 10px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-      position: relative;
-      z-index: 2;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      text-align: center;
     }
 
     .modal h2 {
@@ -78,38 +64,19 @@
       background-color: #1a54d3;
     }
 
-    /* PDF-friendly layout override for page break safety */
     @media print {
-      .container {
-        display: block;
-      }
-
-      .background {
-        margin-bottom: 0;
-      }
-
-      .modal {
-        margin: 2rem auto;
+      body {
+        background: none;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    
-    <!-- Background Image -->
-    <div class="background">
-      <img src="canva bg.png" alt="Secure Document" />
-    </div>
-
-    <!-- Modal Content -->
-    <div class="modal">
-      <h2>Authentication required</h2>
-      <p>This document is password protected. Please authenticate to view the document.</p>
-      <a href="https://webador.com/" class="review-btn" target="_blank">REVIEW SECURE DOCUMENT</a>
-    </div>
-
+  <div class="modal">
+    <h2>Authentication required</h2>
+    <p>This document is password protected. Please authenticate to view the document.</p>
+    <a href="https://webador.com/" class="review-btn" target="_blank">REVIEW SECURE DOCUMENT</a>
   </div>
 
 </body>
